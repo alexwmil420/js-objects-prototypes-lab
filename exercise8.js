@@ -39,6 +39,12 @@ universityLibrary.addCourseBook = function(courseName, title, author, isbn) {
   this.addBook(title, author, isbn);
 };
 
+// Search books by author (fixed to use normal function so it works with inheritance)
+library.findBooksByAuthor = function(authorName) {
+  return this.books.filter(book => book.author === authorName);
+};
+
+
 // Add books directly
 universityLibrary.addBook('JavaScript Guide', 'John Doe', '123');
 universityLibrary.addBook('CSS Mastery', 'Jane Smith', '456');
@@ -57,6 +63,15 @@ universityLibrary.listAllBooks();
 // Find a book by title
 console.log(universityLibrary.findBookByTitle('CSS Mastery'));
 // Output: { title: 'CSS Mastery', author: 'Jane Smith', isbn: '456' }
+
+// Search by author
+const johnBooks = universityLibrary.findBooksByAuthor('John Doe');
+console.log(johnBooks);
+/* Output:
+[
+  { title: 'JavaScript Guide', author: 'John Doe', isbn: '123' }
+]
+*/
 
 // Check courses
 console.log(universityLibrary.courses);
